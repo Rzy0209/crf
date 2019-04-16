@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>组件测试页面</title>
+    <div th:replace="comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+</head>
+<body>
+<select><option value="base">患者基本信息</option>
+    <option value="pastnerve">既往神经系统疾病史</option>
+    <option value="symptomaticIschemicStroke">既往症状性缺血性脑卒中</option>
+    <option value="symptomaticHemorrhagicStroke">既往症状性出血性脑卒中</option>
+    <option value="asymptomatIcstroke">无症状性脑卒中</option>
+    <option value="baselineassessment">基线评估</option>
+    <option value="pastsystem">既往全身疾病史及用药情况</option>
+    <option value="completesummary">试验完成情况总结</option>
+    <option value="medicalHistory">其他相关病史</option>
+    <option value="physicalExamination">患者体格检查</option>
+    <option value="supplementaryExamination">既往辅助检查（非必须，如有请记录）</option>
+
+    <option value="healthEconomics">卫生经济学信息</option>
+    <option value="criteriaNormal">正常受试者入选标准</option>
+    <option value="criteriaAbnormal">异常受试者入选标准</option>
+    <option value="exclusionCriteria">排除标准</option>
+    <option value="resultIntelligent">步态认知筛查结果（智能化神经系统功能评估）</option>
+    <option value="resultsDyskinesia">步态认知筛查结果（神经内科运动障碍专业专家医生组）</option>
+    <option value="eventsObservation">不良事件观察表</option>
+    <option value="assessmentForSaeAndUae">严重不良事件或非预期不良事件评估表</option>
+    <option value="unplannedTreatment">患者接受非计划治疗记录</option>
+
+    <option value="headNMR">头颅核磁共振</option>
+    <option value="inclusioCreiteria">入选标准(第三部分)</option>
+    <option value="manyExclusionCriteria">排除标准</option>
+    <option value="noDyskineisa">步态认知筛查结果（神经内科非运动障碍专业专家医生组）</option>
+
+    <option value="erebrovascularDisease">脑血管病发病情况</option>
+</select>
+<button onclick="show()">生成</button>
+<div id="fr"></div>
+<form action="">
+<div id="body"></div>
+</form>
+<div th:replace="comm/common_js"></div>
+<script th:src="@{/page/js/comp-uitl.js}"></script>
+<script th:src="@{/page/js/comp.js}"></script>
+<!--基本信息-->
+<script th:src="@{/page/js/comp-conf/person-base.js}"></script>
+<!--既往神经系统疾病史-->
+<script th:src="@{/page/js/comp-conf/pastnerve-history.js}"></script>
+<!--既往症状性缺血性脑卒中-->
+<script th:src="@{/page/js/comp-conf/symptomatic-ischemic-stroke.js}"></script>
+<!--既往症状性出血性脑卒中-->
+<script th:src="@{/page/js/comp-conf/symptomatic-hemorrhagic-stroke.js}"></script>
+<!--无症状性脑卒中-->
+<script th:src="@{/page/js/comp-conf/asymptomatic-stroke.js}"></script>
+<!--基线评估-->
+<script th:src="@{/page/js/comp-conf/baseline-assessment.js}"></script>
+<!--既往全身疾病史及用药情况-->
+<script th:src="@{/page/js/comp-conf/pastsystem-disease-history.js}"></script>
+<!--试验完成情况总结-->
+<script th:src="@{/page/js/comp-conf/complete-summary.js}"></script>
+<!--其他相关疾病-->
+<script th:src="@{/page/js/comp-conf/other-related-medical-history.js}"></script>
+<!--步态认知筛查结果（智能化神经系统功能评估）-->
+<script th:src="@{/page/js/comp-conf/results-intelligent.js}"></script>
+<!--患者体格检查-->
+<script th:src="@{/page/js/comp-conf/physical-examination.js}"></script>
+<!--既往辅助检查（非必须，如有请记录）-->
+<script th:src="@{/page/js/comp-conf/supplementary-examination.js}"></script>
+
+
+<!--卫生经济学信息-->
+<script th:src="@{/page/js/comp-conf/health-economics.js}"></script>
+<!--正常受试者入选标准-->
+<script th:src="@{/page/js/comp-conf/criteria-normal.js}"></script>
+<!--异常受试者入选标准-->
+<script th:src="@{/page/js/comp-conf/criteria-abnormal.js}"></script>
+<!--排除标准-->
+<script th:src="@{/page/js/comp-conf/exclusion-criteria.js}"></script>
+<!--步态认知筛查结果（神经内科运动障碍专业专家医生组）-->
+<script th:src="@{/page/js/comp-conf/results-dyskinesia.js}"></script>
+<!--不良事件观察表-->
+<script th:src="@{/page/js/comp-conf/adverse_events_observation.js}"></script>
+<!--严重不良事件或非预期不良事件评估表-->
+<script th:src="@{/page/js/comp-conf/assessment_sae_uae.js}"></script>
+<!--患者接受非计划治疗记录-->
+<script th:src="@{/page/js/comp-conf/unplanned_treatment.js}"></script>
+<!--头颅核磁共振-->
+<script th:src="@{/page/js/comp-conf/head-nuclear-magnetic-responance.js}"></script>
+<!--入选标准-->
+<script th:src="@{/page/js/comp-conf/inclusio-criteria.js}"></script>
+<!--排除标准-->
+<script th:src="@{/page/js/comp-conf/many-exclusion-criteria.js}"></script>
+<!--步态认知筛查结果（神经内科非运动障碍专业专家医生组）-->
+<script th:src="@{/page/js/comp-conf/results-nodyskinesia.js}"></script>
+<!--脑血管病发病情况-->
+<script th:src="@{/page/js/comp-conf/cerebrovascular-disease.js}"></script>
+
+<script>
+    $(function () {
+        //自定义组件注册
+        $.comp.reg({
+            'btn': function (conf) {
+                var btn = CompUtil.comp($.extend(conf, {type: 'button'}));
+                return btn;
+            }
+        });
+    })
+    function show() {
+        $('#fr').empty();
+        var val=$('select').val();
+        var conf;
+        switch (val){
+            case 'base':
+                // CompBase.btn('base')
+                btn("base");
+                conf=CompBase.show();
+                break;
+            case 'pastnerve':
+                btn("pastnerve");
+                conf=CompPastNerve.show();
+                break;
+            case 'pastsystem':
+                btn("pastsystem")
+                conf=CompPastSystem.show();
+                break;
+            case 'completesummary':
+                btn("completeSummary");
+                conf=CompComSummary.show();
+                break;
+            case 'medicalHistory':
+                btn("medicalHistory")
+                conf=CompORML.show();
+                break;
+            case 'baselineassessment':
+//                btn("symptomaticIschemicStroke");
+                conf=BaselineAssessment.show();
+                break;
+            case 'symptomaticIschemicStroke':
+//                btn("symptomaticIschemicStroke");
+                conf=SymptomaticIschemicStroke.show();
+                break;
+            case 'symptomaticHemorrhagicStroke':
+//                btn("symptomaticHemorrhagicStroke");
+                conf=SymptomaticHemorrhagicStroke.show();
+                break;
+            case 'asymptomatIcstroke':
+//                btn("asymptomatIcstroke");
+                conf = AsymptomaticStroke.show();
+                break;
+            case 'resultIntelligent':
+                btn("resultIntelligent");
+                conf = CompResults.show();
+                break;
+            case 'healthEconomics':
+                btn("healthEconomics")
+                conf=CompHE.show();
+                break;
+            case 'criteriaNormal':
+                btn("criteriaNormal")
+                conf=CompICN.show();
+                break;
+            case 'criteriaAbnormal':
+                btn("criteriaAbnormal")
+                conf=CompICA.show();
+                break;
+            case 'exclusionCriteria':
+                btn("exclusionCriteria")
+                conf=CompEC.show();
+                break;
+            case 'physicalExamination':
+                btn("physicalExamination")
+                conf=CompPhysicalExamination.show();
+                break;
+            case 'supplementaryExamination':
+                btn("supplementaryExamination")
+                conf=CompSupplementaryExamination.show();
+                break;
+            case 'resultsDyskinesia':
+                btn("resultsDyskinesia")
+                conf=CompResultDy.show();
+                break;
+            case 'eventsObservation':
+                btn("eventsObservation")
+                conf=CompAEO.show();
+                break;
+            case 'assessmentForSaeAndUae':
+                conf=CompAFSAU.show();
+                break;
+            case 'unplannedTreatment':
+                conf=CompUT.show();
+                break;
+            case 'headNMR':
+                conf=CompHeadNMR.show();
+                break;
+            case 'inclusioCreiteria':
+                conf=CompInclusioCreiteria.show();
+                break;
+            case 'manyExclusionCriteria':
+                conf=CompManyExclusionCriteria.show();
+                break;
+            case 'noDyskineisa':
+                conf=CompNoDyskineisa.show();
+                break;
+            case 'erebrovascularDisease':
+                conf=CompCerebrovascularDisease.show();
+                break;
+            default:
+                conf={};
+                break;
+        }
+        $('#body').empty();
+        $('#body').comp(conf);
+    }
+
+    //点击保存
+    function btn(id) {
+        var crfId = "111";
+        var url = '../api/'+id+'/save';
+        $('#fr').comp({
+            type: 'btn', text: 'btn-'+id, click: function () {
+                var data = $("form").serialize();
+                $.ajax({
+                    url:url
+                    ,type:'post'
+                    ,data:{
+                        "data":data,
+                        "crfId":crfId
+                    }
+                    ,dataType:'text'
+                    ,success:function (msg) {
+                        if("保存成功".indexOf(msg)>-1){
+                            alert(msg);
+                        }else{
+                            alert("保存失败,请检查填报内容")
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>

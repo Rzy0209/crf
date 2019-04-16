@@ -1,0 +1,87 @@
+#基础配置
+conf:
+  crf:
+    ip: localhost
+    port: 7788
+    db:
+      url: 172.30.3.34:8306
+      user: admin
+      pwd: root#123
+  ums:
+    ip: 172.30.3.34
+    port: 8899
+  es:
+    #IP地址
+    ip: 172.30.3.34
+    #索引名称
+    index: wn-crf
+    #端口
+    port: 8300
+    http-port: 8200
+  out:
+  #对外访问IP
+  #ip: 172.28.240.122
+  #对外访问协议
+  #proto: https
+  #对外访问端口
+  #port: 3000
+#标准配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${conf.crf.db.url:localhost:3306}/${conf.crf.db.name:WN_CRF}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: ${conf.crf.db.user:admin}
+    password: ${conf.crf.db.pwd:root123}
+  data:
+    elasticsearch:
+      #     集群名称：临床科研数据中心
+      cluster-name: crdc
+      cluster-nodes: ${conf.es.ip}:${conf.es.port:9300}
+      cluster-http-node: ${conf.es.ip}:${conf.es.http-port:9200}
+      indices:
+        crf:
+          index: ${conf.es.index}
+          types:
+            default: data
+      repositories:
+        enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+server:
+  port: ${conf.crf.port:7788}
+  login: loginzs
+  servlet:
+    context-path: /ecrf
+umsService:
+  url: http://${conf.ums.ip:localhost}:${conf.ums.port:8890}/ums
+umsPageService:
+  url: ${conf.out.proto:http}://${conf.out.ip:${conf.ums.ip:localhost}}:${conf.out.port:${conf.ums.port:8890}}/ums
+appid:
+  value: 3000
+sys:
+  ip: ${conf.out.ip:${conf.crf.ip:localhost}}
+  appid: ${appid.value:3000}
+  loginUrl: ${server.servlet.context-path}/login
+  host: ${conf.out.proto:http}://${sys.ip}:${conf.out.port:${server.port}}${server.servlet.context-path}
+  indexUrl: ${sys.host}/
+  auth:
+    filter:
+      excepts:
+        prefix: /webjars,/s/form-conf,/api/subjectresfield/temp,/api/chip
+jwt:
+  ssoUrl: ${sys.host}/sso
+  user:
+    class: com.wn.sjpt.crf.dto.ums.LoginUser
+logging:
+  file: ecrf.log
+synony.setting: "{\"analysis\":{\"filter\":{\"my_synonym_filter\":{\"type\":\"synonym\",\"synonyms_path\":\"synonyms.txt\"}},\"analyzer\":{\"ik_syno\":{\"type\":\"custom\",\"tokenizer\":\"ik_smart\",\"filter\":[\"my_synonym_filter\"]},\"ik_syno_max\":{\"type\":\"custom\",\"tokenizer\":\"ik_max_word\",\"filter\":[\"my_synonym_filter\"]}}}}"
+dir.upload.url: D:/crf/upload

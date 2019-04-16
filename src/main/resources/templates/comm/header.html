@@ -1,0 +1,143 @@
+<!-- BEGIN HEADER -->
+<div class="page-header" style="height: 51px;position:fixed;z-index:999">
+    <!-- BEGIN HEADER TOP -->
+    <div class="page-header-top t_menu_top" style="display: none;height: 51px;">
+        <div class="container">
+            <a href="javascript:;" class="menu-toggler" style="margin-top: 10px;"></a>
+        </div>
+    </div>
+    <div class="page-header-menu">
+        <div class="container-fuild" style="margin-left: 20px">
+            <a href="javascript:;" class="menu-toggler"></a>
+            <div class="hor-menu " style="width: 100%;">
+                <ul class="nav navbar-nav" id="menu-nav" style="width: 100%;">
+                    <li>
+                        <a style="color:#06CAD2;height:50px;padding-top: 4px;padding-bottom: 5px;" class="logo">
+                            <div class="logo-title" style="width:30px;float:left;padding-top:5px;">
+                                <img src="/ecrf/assets/global/css/img/login/nxg_logo_o.png" style="">
+                            </div>
+                            <div style="width:180px;float:left;padding-top:3px;"><span class="arrow logo-subtitle"
+                                                                                       style="font-size: 14px;">脑血管病智能辅助诊疗</span><br>
+                                <span class="arrow logo-subtitle"
+                                      style="font-size: 14px;margin-left:20px;">技术及决策平台</span></div>
+                        </a>
+                    </li>
+                    <!--菜单栏-->
+                    <li id="menu-replace"></li>
+                    <li class="pull-right dropdown dropdown-user dropdown-dark">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true" style="padding:13px 15px;">
+                            <img alt="" class="img-circle" th:src="@{/assets/global/css/img/users.png}"
+                                 width="25px">
+                            <span id="login-username" class="username username-hide-mobile"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a  href="#changePwdModel" data-toggle="modal" >
+                                    <i class="icon-key"></i> 修改密码 </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/sso?exit}">
+                                    <i class="icon-logout"></i> 登出 </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- END MEGA MENU -->
+        </div>
+    </div>
+</div>
+
+
+<div class="page-header" style="height: 51px"></div>
+<!-- Modal -->
+<div class="modal fade" id="changePwdModel" tabindex="-1" role="dialog" aria-labelledby="changePwdModalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="changePwdModalTitle">修改密码</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="oldPwd">原密码：</label>
+                        <input type="password" class="form-control" name="oldPwd" id="oldPwd" placeholder="请输入原密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPwd">新密码：</label>
+                        <input type="password" class="form-control" name="oldPwd" id="newPwd" placeholder="请输入新密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPwdRetry">再次输入密码：</label>
+                        <input type="password" class="form-control" id="newPwdRetry" placeholder="请再次输入密码">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="changePwd()">确认修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/page/js/login/user.js}"></script>
+<script>
+    !function () {
+        function menu() {
+            LoginInfo.menu();
+            LoginInfo.active();
+        }
+
+        function init() {
+            var menuHtml = sessionStorage.getItem("_MENU_");
+            if (!menuHtml) {
+                LoginInfo.load(menu)
+            } else {
+                menu()
+            }
+        }
+
+        init()
+    }()
+
+    function changePwd() {
+        var x,y,z,reg;
+        x=$("#oldPwd").val();
+        y=$("#newPwd").val();
+        z=$("#newPwdRetry").val();
+        reg=/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~!@#$%^&*()_+`\-={}:";'<>?,.\/]).{6,16}$/;
+        if(x===y){
+            alert("新旧密码一致，请重新输入")
+            return;
+        }
+        if(reg.test(y)==false){
+            alert("新密码必须含数字字符特殊符号，长度6-16位之间")
+            return
+        }
+        if(reg.test(z)==false){
+            alert("请确认与新密码一致")
+            return
+        }
+        if(y!=z){
+            alert("两次密码输入不一致，请重新输入")
+            return
+        }else {
+            $.ajax({
+                url:"../api/user/pwd/change",
+                data:{"oldPwd":x,"newPwd":y},
+                type:"get",
+                success:function () {
+                    $("#changePwdModal").modal('hide');
+                    alert("密码修改成功，点击确定跳转重新登陆！");
+                    window.location.href="../sso?exit";
+                }
+            })
+        }
+    }
+
+</script>

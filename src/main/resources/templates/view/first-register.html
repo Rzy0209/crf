@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初访登记</title>
+    <div th:replace="comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-table/dist/bootstrap-table.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/global/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/page/css/form-crud/form-crud.css}">
+    <link rel="stylesheet" th:href="@{/page/css/first-register/style.css}">
+</head>
+<body  style="color: #0b1014 !important;background: none !important;">
+<input type="hidden" id="res-module" value="crf_first_register"/>
+<div th:replace="comm/header"></div>
+<div class="page-wrapper" style="z-index: 0">
+    <div class="page-wrapper-row full-height">
+        <div class="page-wrapper-middle">
+            <!--具体内容-->
+            <div class="page-container">
+                <div class="page-content-wrapper">
+                    <!--内容头信息-->
+                    <div class="page-head">
+                        <div class="container">
+                            <div class="page-toolbar">
+                            </div>
+                        </div>
+                    </div>
+                    <!--内容-->
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="panel-body" style="padding-bottom:0px;padding-top:15px;">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="input-group col">
+                                                <label class="pull-left control-label s-label">研究阶段选择: &nbsp;&nbsp;</label>
+                                                <select type="text"  id="researchChoose" style="margin-bottom: 5px;width:250px;">
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <span class="pull-left control-label s-label input-group-addon">当前病人ID为: &nbsp;&nbsp;</span>
+                                                <input disabled style="border:none;padding-bottom:10px;background:#F0F3F7;width:150px;"
+                                                       id="patiengId">
+                                            </div>
+                                            <div onclick="FIRST_REGISTER.soundRecording()">
+                                                <button class="btn btn-primary" id="soundImg">录音</button>
+                                            </div>
+                                            <!--<div id="sound"></div>-->
+                                            <div class="input-group col">
+                                                <button class="btn btn-primary" id="btn-audio-upload" type="button" >上传录音文件
+                                                </button>
+                                                &nbsp;
+                                                <button class="btn btn-primary btn-video" type="button" id="btn-video">上传身份信息</button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-7" id="sdMenu" style="padding-top:15px;width:70%;">
+                                                <label class="pull-left control-label s-label">初访登记流程: &nbsp;&nbsp;</label>
+                                                <button id="screeningsubjects" onclick="FIRST_REGISTER.changeContent('screeningsubjects')" class="menuall button" style="background: #059FD6">筛选受试者</button>
+                                                <span class="step-hr"></span>
+                                                <button id="basicinformation" class="menuall button" onclick="FIRST_REGISTER.changeContent('basicinformation')">填写基本资料</button>
+                                                <span class="step-hr"></span>
+                                                <button id="historycollection" class="menuall button" onclick="FIRST_REGISTER.changeContent('historycollection')">病史采集</button>
+                                                <span class="step-hr"></span>
+                                                <button id="baselineassessment" class="menuall button" onclick="FIRST_REGISTER.changeContent('baselineassessment')">基线评估</button>
+                                            </div>
+                                            <div class="col-md-5" style="padding-top:15px;padding-left:10px;">
+                                                <button onclick="EVENTS_OBSERVATION.modalShow()" class="btn btn-primary" type="button">不良事件
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div style="margin-top:20px;box-shadow: 0 0 50px rgba(202, 222, 238, 1);background: #fff;">
+                                            <div>
+                                                <div id="screeningsubjectsdetails">
+                                                    <div class="modal-body">
+                                                        <div class="container-fluid">
+                                                            <div class="row">
+                                                                <div class="col-md-3" id="contentLeft" style="padding-top:10px;">
+                                                                    <ul class="list-group" id="formUlList"></ul>
+                                                                </div>
+                                                                <div class="col-md-9" id="contentRight"  style="padding-top:10px;">
+                                                                    <select id="selectDiv" onchange="FIRST_REGISTER.showPastnerve()" style="display:none;">
+                                                                        </select>
+                                                                    <form class="form comp" id="form-info" action="">
+                                                                        <input type="text" id="crfId" name="crfId" hidden>
+                                                                        <input type="text" id="identityNum" name="identityNum" hidden>
+                                                                        <input type="text" id="subjectId" name="subjectId" value="1" hidden>
+                                                                        <div class="tab-content" id="divForm"></div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer" id="adds">
+                                                        <button type="button" id="subButton" class="btn btn-primary" onclick="addForm()" >提交</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="comm/footer"></div>
+</div>
+<div th:replace="comp/form/modal-upload-radio"></div>
+<div th:replace="view/first-register/video"></div>
+<div th:replace="comm/common_js"></div>
+<div th:replace="comp/form/comps"></div>
+<div th:replace="view/first-register/events-observation"></div>
+<script th:src="@{/page/js/login/user.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table-locale-all.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js}"></script>
+<script th:src="@{/webjars/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/webjars/jquery-validation/localization/messages_zh.min.js}"></script>
+<script th:src="@{/assets/global/plugins/jquery-form/jquery.form.js}"></script>
+<script th:src="@{/assets/global/plugins/jquery-form/form-result-data.js}"></script>
+<script th:src="@{/assets/common/js/shoot.js}"></script>
+<script th:src="@{/webjars/momentjs/min/moment-with-locales.min.js}"></script>
+<script th:src="@{/page/js/first-register/first-register.js}"></script>
+<script th:src="@{/page/js/first-register/event.js}"></script>
+<script th:src="@{/page/js/first-register/audio-upload.js}"></script>
+<script th:src="@{/page/js/first-register/video-upload.js}"></script>
+<script th:src="@{/page/js/record/sound.js}"></script>
+<script th:src="@{/page/js/first-register/events-observation.js}"></script>
+</body>
+</html>

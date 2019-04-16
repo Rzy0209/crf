@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>脑血管病智能辅助诊疗技术及决策平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <div th:replace="comm/common_css"></div>
+    <style>
+        .ums-iframe {
+            width: 100%;
+            border: 0px;
+            height: calc(100vh - 147px);
+        }
+    </style>
+</head>
+<body class="page-container-bg-solid page-boxed">
+<input type="hidden" id="res-module"/>
+<script>
+    !function () {
+        var search = location.search;
+        if (search.length > 0) {
+            var module = search.substr(1);
+            document.getElementById('res-module').value = module;
+        }
+    }()
+</script>
+<div th:replace="comm/header"></div>
+<div class="page-wrapper" style="z-index: 0">
+    <div class="page-wrapper-row full-height">
+        <div class="page-wrapper-middle">
+            <!--具体内容-->
+            <div class="page-container">
+                <div class="page-content-wrapper">
+                    <!--内容头信息-->
+                    <div class="page-head">
+                        <div class="container">
+                            <div class="page-toolbar">
+                            </div>
+                        </div>
+                    </div>
+                    <!--内容-->
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <iframe id="ums-iframe" class="ums-iframe" style="min-height: 630px" frameborder=0 scrolling=auto>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        !function () {
+            var module = document.getElementById('res-module').value;
+            var umsMap = JSON.parse(sessionStorage.getItem("_UMS_MAP_"));
+            var url = umsMap[module];
+            document.getElementById('ums-iframe').src = url;
+        }()
+    </script>
+    <div th:replace="comm/footer"></div>
+</div>
+<div th:replace="comm/common_js"></div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>临床填报</title>
+    <div th:replace="/comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/commons-web.css}">
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-table/dist/bootstrap-table.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-select/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" th:href="@{/page/css/form-crud/form-crud.css}">
+    <link rel="stylesheet" th:href="@{/assets/global/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/css/bootstrap-datepicker3.min.css}">
+</head>
+<style>
+    .datetimepicker td, .datetimepicker th {
+        text-align: center;
+        min-width: 35px;
+        height: 30px;
+        border-radius: 4px;
+        border: none;
+    }
+    .page-qc-edit .row{
+        margin: 0px;
+        background: #ffffff;
+    }
+    h1, h2, h3, h4, h5, h6{
+        margin-top: 0;
+        height: 40px;
+        padding-left: 10px;
+        padding-top: 6px;
+        margin-bottom: .5em;
+        color: rgba(0, 0, 0, 0.85);
+        font-weight: 500;
+    }
+    .datetimepicker{
+        padding: 4px;
+        right: 590px;
+        margin-top: 1px;
+        min-width: 260px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        direction: ltr;
+    }
+    .time-set-input{
+        margin-left: 10px !important;
+        height: 100%;
+        width: 50% !important;
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        font-size: 12px !important;
+        color: #CCCCCC;
+        padding: 6px 28px 6px 8px !important;
+        line-height: 18px !important;
+    }
+</style>
+<body style="color: #0b1014 !important;background: none !important;" class="page-qc-edit">
+<input type="hidden" id="res-module" value="crf_index" />
+<!--<div th:replace="/comm/header"></div>-->
+<div class="page-wrapper" style="z-index: 0">
+    <div class="page-wrapper-row full-height">
+        <div class="page-wrapper-middle">
+            <!--具体内容-->
+            <div class="page-container">
+                <div class="page-content-wrapper">
+                    <!--内容头信息-->
+                    <div class="page-head">
+                        <div class="container">
+                            <div class="page-toolbar">
+                            </div>
+                        </div>
+                    </div>
+                    <!--内容-->
+                    <div class="page-content">
+                        <div class="container-fluid">
+                           <div th:replace="/comp/form/conf/conf"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="/comm/footer"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="compModal" tabindex="-1" data-width="1000">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    表单列表
+                </h4>
+                <button type="button" data-dismiss="modal" aria-hidden="true" style="background: #ffff;border: 0px;font-size: 12px;">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body" id="compPre">
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/comm/common_js"></div>
+<div th:replace="/comp/form/comps"></div>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table-locale-all.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/src/locale/bootstrap-table-zh-CN.js}"></script>
+
+<script th:src="@{/webjars/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/webjars/jquery-validation/localization/messages_zh.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-datepicker/js/bootstrap-datepicker.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js}"></script>
+<script th:src="@{/page/js/view/jquery.form.js}"></script>
+<script th:src="@{/page/js/comp-edit/editor.js}"></script>
+</body>
+</html>

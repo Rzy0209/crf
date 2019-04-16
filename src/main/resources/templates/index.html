@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ecrf-临床表单填报平台</title>
+</head>
+<style>
+    .loading-style-10 {
+        width: 60%;
+        height: 12px;
+        border-radius: 4px;
+        margin: 50px auto;
+        position: relative;
+        background: lightblue;
+        overflow: hidden;
+        top:38.2vh;
+    }
+
+    .loading-style-10 span {
+        display: block;
+        width: 20%;
+        height: 100%;
+        border-radius: 4px;
+        background: lightgreen;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-animation: loading-style-10 4s linear infinite;
+        -moz-animation: loading-style-10 4s linear infinite;
+        -ms-animation: loading-style-10 4s linear infinite;
+        -o-animation: loading-style-10 4s linear infinite;
+        animation: loading-style-10 4s linear infinite;
+    }
+
+    @-webkit-keyframes loading-style-10 {
+        0% {
+            -webkit-transform: translate(-150px);
+        }
+        50% {
+            -webkit-transform: translate(200%);
+        }
+        100% {
+            -webkit-transform: translate(500%);
+        }
+    }
+
+    @-moz-keyframes loading-style-10 {
+        0% {
+            -moz-transform: translate(-150px);
+        }
+        50% {
+            -moz-transform: translate(200%);
+        }
+        100% {
+            -moz-transform: translate(500%);
+        }
+    }
+
+    @-ms-keyframes loading-style-10 {
+        0% {
+            -ms-transform: translate(-150px);
+        }
+        50% {
+            -ms-transform: translate(200%);
+        }
+        100% {
+            -ms-transform: translate(500%);
+        }
+    }
+
+    @-o-keyframes loading-style-10 {
+        0% {
+            -o-transform: translate(-150px);
+        }
+        50% {
+            -o-transform: translate(200%);
+        }
+        100% {
+            -o-transform: translate(500%);
+        }
+    }
+
+    @keyframes loading-style-10 {
+        0% {
+            transform: translate(-150px);
+        }
+        50% {
+            transform: translate(200%);
+        }
+        100% {
+            transform: translate(500%);
+        }
+    }
+</style>
+<body style="background-color: #AAAAAA">
+<div>
+    <div class="loading-style-10">
+        <span></span>
+    </div>
+</div>
+<script th:src="@{/page/js/login/user.js}"></script>
+<script>
+    !function () {
+       LoginInfo.load(LoginInfo.firstPage)
+    }()
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+
+<!-- Modal -->
+<div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="downloadModalTitle">文件下载列表</h4>
+                <button type="button" class="close" onclick="closeDownload()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <table class="table-striped" id="filesTable" style="width: 780px;">
+                            <thead>
+                            <tr>
+                                <th >文件名</th>
+                                <th >文件大小</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="filesList"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" id="download">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<!--摄像头截屏上传-->
+<!-- Modal -->
+<div class="modal fade" id="video-upload-model" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">视频图像上传</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="row">
+                    <div class="col">
+                        <video id="video-cam" width="360" height="220"></video>
+                    </div>
+                    <div class="col">
+                        <canvas id="canvas-cam" width="360" height="220"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button class="btn btn-primary" id="video-snap">截屏</button>
+                <button class="btn btn-primary" id="upload-snap">上传</button>
+                <button type="button" class="btn btn-primary" id="upload-and-snap">截屏上传</button>
+            </div>
+        </div>
+    </div>
+</div>

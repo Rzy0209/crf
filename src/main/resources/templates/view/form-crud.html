@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单CRUD</title>
+    <div th:replace="comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/page/css/form-crud/form-crud.css}">
+</head>
+<body>
+<div class="menu">
+
+</div>
+<div class="container-fluid">
+    <div class="row main">`
+        <div class="col-md-2 leftMenu">
+            <button type="button" class="btn btn-default">第一部分</button>
+            <button type="button" class="btn btn-default">第二部分</button>
+            <button type="button" class="btn btn-default">第三部分</button>
+        </div>
+        <div class="col-md-10 rightContent">
+            <div class="content-search-field">
+                <button class="btn btn-primary btn-lg pull-right" onclick="newForm()" style="margin-top:35px;">
+                    新建
+                </button>
+            </div>
+            <div class="content-content-field">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:1245px;">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    表单列表
+                </h4>
+                <button type="button" data-dismiss="modal" aria-hidden="true" style="background: #ffff;border: 0px;font-size: 12px;">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3" id="contentLeft">
+                        <ul class="list-group" id="formUlList"></ul>
+                    </div>
+                    <div class="col-md-9">
+                        <form action=""><input type="text" id="crfId" name="crfId" hidden><div class="tab-content" id="divForm"></div></form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-success"  onclick="addForm()">提交当前表格
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div th:replace="comm/common_js"></div>
+<script th:src="@{/page/js/comp-uitl.js}"></script>
+<script th:src="@{/page/js/comp.js}"></script>
+
+<!--基本信息-->
+<script th:src="@{/page/js/comp-conf/person-base.js}"></script>
+<!--既往神经系统疾病史-->
+<script th:src="@{/page/js/comp-conf/pastnerve-history.js}"></script>
+<!--既往全身疾病史及用药情况-->
+<script th:src="@{/page/js/comp-conf/pastsystem-disease-history.js}"></script>
+<!--试验完成情况总结-->
+<script th:src="@{/page/js/comp-conf/complete-summary.js}"></script>
+<!--其他相关疾病-->
+<script th:src="@{/page/js/comp-conf/other-related-medical-history.js}"></script>
+<!--步态认知筛查结果（智能化神经系统功能评估）-->
+<script th:src="@{/page/js/comp-conf/results-intelligent.js}"></script>
+<!--患者体格检查-->
+<script th:src="@{/page/js/comp-conf/physical-examination.js}"></script>
+<!--既往辅助检查（非必须，如有请记录）-->
+<script th:src="@{/page/js/comp-conf/supplementary-examination.js}"></script>
+
+
+<!--卫生经济学信息-->
+<script th:src="@{/page/js/comp-conf/health-economics.js}"></script>
+<!--正常受试者入选标准-->
+<script th:src="@{/page/js/comp-conf/criteria-normal.js}"></script>
+<!--异常受试者入选标准-->
+<script th:src="@{/page/js/comp-conf/criteria-abnormal.js}"></script>
+<!--排除标准-->
+<script th:src="@{/page/js/comp-conf/exclusion-criteria.js}"></script>
+<!--步态认知筛查结果（神经内科运动障碍专业专家医生组）-->
+<script th:src="@{/page/js/comp-conf/results-dyskinesia.js}"></script>
+<!--不良事件观察表-->
+<script th:src="@{/page/js/comp-conf/adverse_events_observation.js}"></script>
+<!--严重不良事件或非预期不良事件评估表-->
+<script th:src="@{/page/js/comp-conf/assessment_sae_uae.js}"></script>
+<!--患者接受非计划治疗记录-->
+<script th:src="@{/page/js/comp-conf/unplanned_treatment.js}"></script>
+<!--头颅核磁共振-->
+<script th:src="@{/page/js/comp-conf/head-nuclear-magnetic-responance.js}"></script>
+<!--入选标准-->
+<script th:src="@{/page/js/comp-conf/inclusio-criteria.js}"></script>
+<!--排除标准-->
+<script th:src="@{/page/js/comp-conf/many-exclusion-criteria.js}"></script>
+<!--步态认知筛查结果（神经内科非运动障碍专业专家医生组）-->
+<script th:src="@{/page/js/comp-conf/results-nodyskinesia.js}"></script>
+<!--脑血管病发病情况-->
+<script th:src="@{/page/js/comp-conf/cerebrovascular-disease.js}"></script>
+
+<script>
+    // 当前表格code
+    var nowFormToCommitCode="";
+    // 第一部分表格集合
+    var lbarr=["患者基本信息:base","既往神经系统疾病史:pastnerve","既往全身疾病史及用药情况:pastsystem","其他相关病史:medicalHistory","患者体格检查:physicalExamination","既往辅助检查（非必须，如有请记录）:supplementaryExamination","卫生经济学信息:healthEconomics","正常受试者入选标准:criteriaNormal","异常受试者入选标准:criteriaAbnormal","排除标准:exclusionCriteria","步态认知筛查结果（智能化神经系统功能评估）:resultIntelligent","步态认知筛查结果（神经内科运动障碍专业专家医生组）:resultsDyskinesia","不良事件观察:eventsObservation","严重不良事件或非预期不良事件评估表:assessmentForSaeAndUae","试验完成情况总结:completesummary"];
+    // 初始化内容
+    $(function() {
+        $.each(lbarr,function(index,value){
+            var split = value.split(":");
+            var formName = split[0];
+            if(index == 0){
+                $("#formUlList").append('<li class="active"><div id="div_a_'+index+'"><a href="#tab_'+index+'" onclick="openForm('+index+')" data-toggle="table" aria-expanden="true" title="'+formName+'">'+formName.substring(0,18)+'</a></div></li>');
+            }else{
+                $("#formUlList").append('<li class=""><div id="div_a_'+index+'"><a href="#tab_'+index+'"  onclick="openForm('+index+')" data-toggle="table" aria-expanden="false" title="'+formName+'">'+formName.substring(0,18)+'</a></div></li>');
+            }
+        });
+    });
+    //modal
+    function newForm(){
+        $("#myModal").modal("show");
+        $("#crfId").val("");
+    };
+    // 打开form
+    function openForm(index){
+        // 选中当前列表展示
+        $("#formUlList a").each(function(index, element) {
+            $("#div_a_"+index+" a").css("color","");
+        });
+        $("#div_a_"+index+" a").css("color","red");
+        // 赋值当前表格code
+        var formStr = lbarr[index];
+        var split = formStr.split(":");
+        nowFormToCommitCode = split[1];
+        // 加载form表格
+        var conf;
+        switch (index){
+            case 0:
+                conf=CompBase.show();
+                break;
+            case 1:
+                conf=CompPastNerve.show();
+                break;
+            case 2:
+                conf=CompPastSystem.show();
+                break;
+            case 14:
+                conf=CompComSummary.show();
+                break;
+            case 3:
+                conf=CompORML.show();
+                break;
+            case 10:
+                conf = CompResults.show();
+                break;
+            case 6:
+                conf=CompHE.show();
+                break;
+            case 7:
+                conf=CompICN.show();
+                break;
+            case 8:
+                conf=CompICA.show();
+                break;
+            case 9:
+                conf=CompEC.show();
+                break;
+            case 4:
+                conf=CompPhysicalExamination.show();
+                break;
+            case 5:
+                conf=CompSupplementaryExamination.show();
+                break;
+            case 11:
+                conf=CompResultDy.show();
+                break;
+            case 12:
+                conf=CompAEO.show();
+                break;
+            case 13:
+                conf=CompAFSAU.show();
+                break;
+            default:
+                conf={};
+                break;
+        }
+        $('#divForm').empty();
+        $('#divForm').comp(conf);
+    };
+    // 添加表格信息
+    function addForm() {
+        // 未填写信息 不保存
+        if(nowFormToCommitCode == null || nowFormToCommitCode == ""){
+            return;
+        }
+        if(confirm("确定提交？")){
+            var crfId = $("#crfId").val();
+
+            // 提交的信息
+            var data = $("form").serialize();
+            // 如果新建患者基本信息 则crfid重置
+            if(nowFormToCommitCode == "base"){
+                $("#crfId").val("");
+            }else{
+                if(($("#crfId").val() == "" || $("#crfId").val() == undefined || $("#crfId").val() == null)){
+                    alert("先保存患者基本信息，在进行此操作");
+                }
+            }
+            // 提交路径
+            var url = '../api/'+nowFormToCommitCode+'/save';
+            $.ajax({
+                url:url
+                ,type:'post'
+                ,data:data
+                ,dataType:'text'
+                ,success:function (msg) {
+                    // 患者信息拿crfId
+                    if(nowFormToCommitCode == "base"){
+                        $("#crfId").val(msg);
+                    }
+                    if("保存失败".indexOf(msg)>-1){
+                        alert(msg);
+                    }else{
+                        alert("保存成功")
+                    }
+                }
+            });
+        }
+
+    };
+</script>
+</body>
+</html>

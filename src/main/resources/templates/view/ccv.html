@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>配置设计模式</title>
+    <div th:replace="comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/assets/global/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/page/css/edit/editor.css}">
+
+</head>
+<body>
+<div id="main-container">
+    <div id="code-container">
+        <div id="control-panel">
+            <div id="code-info"></div>
+            <div class="control-btn-panel"><a href="javascript:;" onclick="Et.run()"
+                                              class="btn btn-default btn-sm">运行</a></div>
+        </div>
+        <div id="code-panel"></div>
+    </div>
+    <div id="h-handler" class="handler"></div>
+    <div class="right-container">
+        <div id="view-panel" class="right-panel comp"></div>
+    </div>
+</div>
+<div th:replace="comm/common_js"></div>
+<script th:src="@{/assets/global/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js}"></script>
+<script th:src="@{/assets/global/plugins/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"></script>
+<script th:src="@{/page/js/comp-uitl.js}"></script>
+<script th:src="@{/page/js/comp.js}"></script>
+
+<script type="text/javascript" th:src="@{/assets/global/plugins/ace/ace.js}"></script>
+<script type="text/javascript" th:src="@{/assets/global/plugins/ace/ext-language_tools.js}"></script>
+<script type="text/javascript" th:src="@{/page/js/edit/editor.js}"></script>
+</body>
+</html>

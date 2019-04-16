@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>课题管理</title>
+    <div th:replace="comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-table/dist/bootstrap-table.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-select/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/global/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-daterangepicker/3.0.3/css/bootstrap-daterangepicker.css}">
+</head>
+<body style="color: #0b1014 !important;background: none !important;">
+<input type="hidden" id="res-module" value="crf_subject"/>
+<div th:replace="comm/header"></div>
+<div class="page-wrapper" style="z-index: 0">
+    <div class="page-wrapper-row full-height">
+        <div class="page-wrapper-middle">
+            <!--具体内容-->
+            <div class="page-container">
+                <div class="page-content-wrapper">
+                    <!--内容头信息-->
+                    <div class="page-head">
+                        <div class="container">
+                            <div class="page-toolbar">
+                            </div>
+                        </div>
+                    </div>
+                    <!--内容-->
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="panel-body" style="padding-bottom:0px;padding-top:15px;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="pull-left control-label s-label">课题名称: &nbsp;&nbsp;</label>
+                                        <div class="input-group col-md-4">
+                                            <input type="text" class="form-control" id="testNumber"
+                                                   placeholder="按课题名称...">
+                                            <span class="input-group-btn">&nbsp;&nbsp;
+                                                <button class="btn btn-primary" type="button" onclick="queryTable()">查&nbsp;&nbsp;询
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="toolbar" class="btn-group" style="text-align: right;">
+                                    <button id="addCrf" type="button" class="btn btn-primary" onclick="showModal()">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                                    </button>
+                                </div>
+                                <table id="subjectList"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        !function () {
+            var module = document.getElementById('res-module').value;
+            var umsMap = JSON.parse(sessionStorage.getItem("_UMS_MAP_"));
+            var url = umsMap[module];
+            if (!!document.getElementById('ums-iframe')) {
+                document.getElementById('ums-iframe').src = url;
+            }
+        }()
+    </script>
+    <div th:replace="comm/footer"></div>
+</div>
+
+<!--课题编辑窗体-->
+<div id="subjectModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> 课题基本信息 </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="portlet">
+                    <form class="form text-right" id="subjectForm" style="min-height: 200px;">
+                        <input type="hidden" name="id" id="id"/>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label class="control-label">
+                                    课题名称
+                                    <span class="required" aria-required="true"> * </span>
+                                </label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="name" id="form_name" placeholder=""
+                                       style="width: 100% !important;min-width: 50px;">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label class="control-label">
+                                    起止时间
+                                    <span class="required" aria-required="true"> * </span>
+                                </label>
+                            </div>
+                            <div class="col input-group" id="ctrl-date">
+                                <input type="text" readonly class="form-control" placeholder="起止时间">
+                                <div class="input-group-append">
+                                    <span class="input-group-text hand"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <input type="text" hidden id="startDate" name="startDate">
+                                <input type="text" hidden id="endDate" name="endDate">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label class="control-label">
+                                    负责人
+                                </label>
+                            </div>
+                            <div class="col">
+                                <select class="bs-select form-control" tabindex="-98" id="leader" name="leader">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label class="control-label">
+                                    类型
+                                </label>
+                            </div>
+                            <div class="col">
+                                <select class="bs-select form-control" name="type" id="type"
+                                        style="width: 100% !important;min-width: 50px;">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label class="control-label">
+                                    级别
+                                </label>
+                            </div>
+                            <div class="col">
+                                <select class="bs-select form-control" tabindex="-98" id="level" name="level">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label class="control-label">
+                                    所属专病
+                                </label>
+                            </div>
+                            <div class="col">
+                                <select class="bs-select form-control" tabindex="-98" id="belong" name="belong">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label class="control-label">
+                                    状态
+                                </label>
+                            </div>
+                            <div class="col">
+                                <select class="bs-select form-control" tabindex="-98" id="status">
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn dark" onclick="closeModal()">关闭</button>
+                <button type="button" class="btn btn-primary" id="saveBtn" onclick="save()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="comm/common_js"></div>
+<div th:replace="comp/form/comps"></div>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table-locale-all.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js}"></script>
+<script th:src="@{/webjars/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/webjars/jquery-validation/localization/messages_zh.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-select/js/bootstrap-select.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-select/js/i18n/defaults-zh_CN.min.js}"></script>
+<script th:src="@{/webjars/momentjs/min/moment-with-locales.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-daterangepicker/js/bootstrap-daterangepicker.js}"></script>
+<script th:src="@{/page/js/form-result-data.js}"></script>
+<script th:src="@{/page/js/view/subject_list.js}"></script>
+</body>
+</html>

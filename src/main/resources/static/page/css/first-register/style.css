@@ -1,0 +1,70 @@
+.btn-primary {
+    color: #000;
+    background-color: #EDECEA;
+    border-color: #A7A39E;
+    height: 25px;
+}
+.btn-primary:hover {
+    color: #000;
+    background-color: #EDECEA;
+    border-color: #A7A39E;
+    height: 25px;
+}
+.col {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+span.step-hr {
+    display: inline-block;
+    width: 60px;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    margin: 0 2px;
+}
+.button{
+    background:white;
+    border:1px solid #000;
+    height:30px;color: #000;
+    border-radius: 5px !important;
+}
+.comp {
+    padding: .375rem .75rem !important;
+    font-size: 1.6rem;
+    line-height: 3.6rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+/*覆盖表单元素换行*/
+.col-4 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+.col-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+.col-7 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+.col-8 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+#form-info{
+    min-height: calc(100vh - 328px);
+}
+#screeningsubjectsdetails .modal-body{
+    min-height: calc(100vh - 300px);
+}
+#selectDiv{
+    margin-left:5px;
+    margin-top:5px;
+    position: absolute;
+}

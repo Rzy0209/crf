@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>患者数量统计</title>
+    <div th:replace="/comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-table/dist/bootstrap-table.min.css}">
+</head>
+<body>
+<div th:replace="comm/header"></div>
+<div class="page-wrapper" style="z-index: 0">
+    <div class="page-wrapper-row full-height">
+        <div class="page-wrapper-middle">
+            <!--具体内容-->
+            <div class="page-container">
+                <div class="container-fluid">
+                    <div class="panel-body" style="padding-bottom:0px;padding-top:15px;">
+                        <div class="row" style="margin-top: 20px;">
+                            <div  class="col-md-12">
+                                <table id="acountTable" data-mobile-responsive="true" class="mb-bootstrap-table text-nowrap"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="/comm/common_js"></div>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table-locale-all.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js}"></script>
+<script th:src="@{/assets/js/page/form-acount/form-acount.js}"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件预览</title>
+    <div th:replace="/comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/commons-web.css}">
+    <link rel="stylesheet" th:href="@{/page/css/collecting.css}">
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-table/dist/bootstrap-table.min.css}">
+    <link rel="stylesheet" th:href="@{/page/css/form-crud/form-crud.css}">
+    <link rel="stylesheet" th:href="@{/assets/global/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/css/bootstrap-datepicker3.min.css}">
+</head>
+<style>
+    .newGridLayout .questionArea .defLabel > input[type="radio"] + span{
+        border: 1px solid #CFCFCF;
+        border-radius: 50% !important;
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        margin-right: 5px;
+    }
+    .datepicker table tr td, .datepicker table tr th {
+        text-align: center;
+        min-width: 25px;
+        height: 30px;
+        border-radius: 4px;
+        border: none;
+    }
+</style>
+<body style="margin: 0px;padding: 0px;width:100%;height:auto" class="page-qc-edit">
+<div id="preview">
+
+</div>
+
+<div th:replace="/comm/common_js"></div>
+<div th:replace="/comp/form/comps"></div>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table-locale-all.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/src/locale/bootstrap-table-zh-CN.js}"></script>
+<script th:src="@{/webjars/bootstrap-datepicker/js/bootstrap-datepicker.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js}"></script>
+<script th:src="@{/page/js/comp-edit/preview.js}"></script>
+</body>
+</html>

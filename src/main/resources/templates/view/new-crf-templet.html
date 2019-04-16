@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>脑血管病智能辅助诊疗技术及决策平台</title>
+    <div th:replace="comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-table/dist/bootstrap-table.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/global/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/page/css/form-crud/form-crud.css}">
+    <link th:href="@{/dynamic-form/css/app.css}" rel="stylesheet">
+</head>
+<body>
+<div th:replace="comm/header"></div>
+<div id="wn-form-editor"></div>
+<div th:replace="comm/footer"></div>
+<div th:replace="comp/form/modal-add"></div>
+<div th:replace="comp/form/modal-upload"></div>
+<div th:replace="comp/form/modal-upload-pic"></div>
+<div th:replace="comp/form/modal-download"></div>
+<div th:replace="comm/common_js"></div>
+<div th:replace="comp/form/comps"></div>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table-locale-all.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js}"></script>
+<script th:src="@{/webjars/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/webjars/jquery-validation/localization/messages_zh.min.js}"></script>
+<script th:src="@{/assets/global/plugins/jquery-form/jquery.form.js}"></script>
+<script th:src="@{/assets/global/plugins/jquery-form/form-result-data.js}"></script>
+<script th:src="@{/webjars/momentjs/min/moment-with-locales.min.js}"></script>
+<script th:src="@{/dynamic-form/js/manifest.js}"></script>
+<script th:src="@{/dynamic-form/js/vendor.js}"></script>
+<script th:src="@{/dynamic-form/js/app.js}"></script>
+<script>
+    _dynEditor.init({
+        el: '#wn-form-editor',
+        id: 'abc',
+        name: 'test',
+        saveListener: function (pageInfo) {
+            console.log('data:' + JSON.stringify(pageInfo))
+        }
+    })
+</script>
+</body>
+</html>

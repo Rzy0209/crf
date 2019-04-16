@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>临床大数据检索平台-错误</title>
+    <div th:replace="comm/common_css" ></div>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3 >错误码：<span th:text="${#response.getStatus()}"></span></h3>
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 offset-6">
+                    <a th:href="@{/sso?exit}"><i class="icon-logout"></i> 重新登录 </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="alert alert-danger">
+                        <strong th:text="${#response.getStatus()}+' '+${#object.error}"></strong><br>
+                        <div th:utext="${#object.trace}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="comm/common_js"></div>
+</body>
+</html>

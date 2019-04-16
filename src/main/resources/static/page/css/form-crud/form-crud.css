@@ -1,0 +1,21 @@
+#myModal>.modal-dialog{
+    max-width: 94%;
+}
+#myModal>.modal-dialog .modal-body{
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+#contentLeft{
+    width:200px;
+}
+.comp {
+    min-height: calc(100vh - 180px);
+}
+
+#contentLeft li{
+    cursor:pointer;
+}
+.el-input-image-hmrPicUpload {
+    line-height: 24px;
+    font-size: 12px;
+}

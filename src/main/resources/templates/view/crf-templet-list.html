@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>脑血管病智能辅助诊疗技术及决策平台</title>
+    <div th:replace="comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-table/dist/bootstrap-table.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/global/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/page/css/form-crud/form-crud.css}">
+</head>
+<body>
+<div th:replace="comm/header"></div>
+<div class="page-wrapper" style="z-index: 0">
+    <div class="page-wrapper-row full-height">
+        <div class="page-wrapper-middle">
+            <!--具体内容-->
+            <div class="page-container">
+                <div class="page-content-wrapper">
+                    <!--内容头信息-->
+                    <div class="page-head">
+                        <div class="container">
+                            <div class="page-toolbar">
+                            </div>
+                        </div>
+                    </div>
+                    <!--内容-->
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="panel-body" style="padding-bottom:0px;padding-top:15px;">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-lg-offset-8">
+                                                <button type="button" class="btn btn-info"
+                                                        onclick="showCreateCrfModal()">创建模板
+                                                </button>
+                                                <!--<a type="button" class="btn btn-info" href="new-crf-templet.html">创建模板</a>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col text-right" id="optCtxRight">
+
+                                    </div>
+                                </div>
+                                <table id="crfTempletList"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="comm/footer"></div>
+</div>
+<div th:replace="comp/form/modal-new-crf-templet"></div>
+<div th:replace="comm/common_js"></div>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table-locale-all.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js}"></script>
+<script th:src="@{/webjars/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/webjars/jquery-validation/localization/messages_zh.min.js}"></script>
+<script th:src="@{/assets/global/plugins/jquery-form/jquery.form.js}"></script>
+<script th:src="@{/assets/global/plugins/jquery-form/form-result-data.js}"></script>
+<script th:src="@{/webjars/momentjs/min/moment-with-locales.min.js}"></script>
+<!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>-->
+<script th:src="@{/page/js/view/crf-templet-list.js}"></script>
+</body>
+</html>

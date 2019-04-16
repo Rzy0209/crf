@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>脑血管病智能辅助诊疗技术及决策平台 - 登录</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}">
+    <!--[if lt IE 9]>
+    <![endif]-->
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            /*-moz-box-sizing: content-box;*/
+            font-family: 'Microsoft YaHei';
+        }
+
+        .l {
+            float: left;
+        }
+
+        .r {
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .login-position {
+            position: relative;
+        }
+
+        .login-con {
+            width: 822px;
+            height: 566px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -411px;
+            margin-top: -262px;
+        }
+
+        .login-top {
+            width: 822px;
+            height: 470px;
+            /*background: url("../img/login-con-shadow.png") no-repeat center;*/
+            -webkit-box-shadow: 0 6px 14px 0 rgba(42, 56, 86, .4);
+            -moz-box-shadow: 0 6px 14px 0 rgba(42, 56, 86, .4);
+            box-shadow: 0 6px 14px 0 rgba(42, 56, 86, .4);
+        }
+
+        .login-con .left {
+            width: 481px;
+            height: 470px;
+            background: url("assets/global/css/img/loginzs/login-left-new.png") no-repeat center;
+            /*margin-top: 27px;*/
+            /*margin-left: 27px;*/
+            position: relative;
+        }
+
+        .login-con .left .login-up {
+            position: absolute;
+            top: 285px;
+            left: 168px;
+            z-index: 2;
+            animation: up 1000ms linear -2s alternate infinite;
+            -moz-animation: up 1000ms linear -2s alternate infinite; /* Firefox */
+            -webkit-animation: up 1000ms linear -2s alternate infinite; /* Safari and Chrome */
+            -o-animation: up 1000ms linear -2s alternate infinite; /* Opera */
+        }
+
+        .login-con .left .login-down {
+            position: absolute;
+            top: 162px;
+            left: 315px;
+            z-index: 3;
+            animation: down 1000ms linear -2s alternate infinite;
+            -moz-animation: down 1000ms linear -2s alternate infinite; /* Firefox */
+            -webkit-animation: down 1000ms linear -2s alternate infinite; /* Safari and Chrome */
+            -o-animation: down 1000ms linear -2s alternate infinite; /* Opera */
+        }
+
+        @keyframes up {
+            0% {
+                top: 275px;
+            }
+            100% {
+                top: 285px;
+            }
+        }
+
+        @-moz-keyframes up {
+            0% {
+                top: 275px;
+            }
+            100% {
+                top: 285px;
+            }
+        }
+
+        @-webkit-keyframes up {
+            0% {
+                top: 275px;
+            }
+            100% {
+                top: 285px;
+            }
+        }
+
+        @-o-keyframes up {
+            0% {
+                top: 275px;
+            }
+            100% {
+                top: 285px;
+            }
+        }
+
+        @keyframes down {
+            0% {
+                top: 152px;
+            }
+            100% {
+                top: 162px;
+            }
+        }
+
+        @-moz-keyframes down {
+            0% {
+                top: 152px;
+            }
+            100% {
+                top: 162px;
+            }
+        }
+
+        @-webkit-keyframes down {
+            0% {
+                top: 152px;
+            }
+            100% {
+                top: 162px;
+            }
+        }
+
+        @-o-keyframes down {
+            0% {
+                top: 152px;
+            }
+            100% {
+                top: 162px;
+            }
+        }
+
+        .right {
+            width: 340px;
+            height: 470px;
+            /*margin-top: 27px;*/
+            background: #fff;
+        }
+
+        .right .r-wrap {
+            width: 270px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .right .logo {
+            margin-top: 56px;
+            width: 54px;
+            height: 34px;
+        }
+
+        .right h3 {
+            margin-top: 16px;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            color: #434343;
+            font-family: "Microsoft YaHei";
+            font-weight: 500;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #dddddd;
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #dddddd;
+        }
+
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #dddddd;
+        }
+
+        input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #dddddd;
+        }
+
+        .right .user {
+            margin-top: 42px;
+        }
+
+        .right .code,
+        .right .password,
+        .right .user {
+            height: 40px;
+            width: 240px;
+            /*border-bottom: 1px solid #c5c5c5;*/
+            margin-bottom: 10px;
+            margin-left: 15px;
+            position: relative;
+        }
+
+        .right i.icon-login {
+            display: block;
+            width: 36px;
+            height: 40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .right .icon-u {
+            background: url("assets/global/css/img/loginzs/login-user.png") no-repeat center;
+        }
+
+        .right .icon-p {
+            background: url("assets/global/css/img/loginzs/login-password.png") no-repeat center;
+        }
+
+        .right .icon-c {
+            background: url("assets/global/css/img/loginzs/login-code.png") no-repeat center;
+        }
+
+        .right .psd-input,
+        .right .user-input {
+            width: 240px;
+            height: 40px;
+            /*line-height: 40px;*/
+            padding-left: 50px;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 1px;
+            border-left-width: 0px;
+            border-bottom-color: #c5c5c5;
+            line-height: 1px;
+        }
+
+        .right .c-left {
+            width: 148px;
+        }
+
+        .right .c-right {
+            width: 86px;
+            line-height: 34px;
+            background-image: url(assets/global/css/img/loginzs/yzm.png);
+            background-repeat: no-repeat;
+            color: rgba(51, 51, 51, 0.71);
+            font-size: 20px;
+            margin-top: 5px;
+        }
+
+        .right .code-input {
+            width: 148px;
+            height: 40px;
+            padding-left: 50px;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 1px;
+            border-left-width: 0px;
+            border-bottom-color: #c5c5c5;
+            line-height: 1px;
+        }
+
+        .right .code-input:focus,
+        .right .psd-input:focus,
+        .right .user-input:focus {
+            outline: none;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 1px;
+            border-left-width: 0px;
+            border-bottom-color: #8f9cb8;
+            /*filter: progid:DXImageTransform.Microsoft.Shadow(color='#c5c5c5', Direction=125, Strength=9);*/
+            /*filter: blur(15px);*/
+            /*-webkit-filter: blur(15px);*/
+            /*-moz-filter: blur(15px);*/
+        }
+
+        .error {
+            /*margin-top: 15px;*/
+            padding-top: 15px;
+        }
+
+        .error .icon-e {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: url("assets/global/css/img/loginzs/error.png") no-repeat center;
+            vertical-align: middle;
+        }
+
+        .error span {
+            font-size: 12px;
+            color: #ff5252;
+        }
+
+        .submit {
+            width: 270px;
+            height: inherit;
+            /*margin-top: 20px;*/
+            text-align: center;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 270px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+            position: relative;
+            background-color: #3769e4; /* 标准的语法 */
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        .submit-other {
+            display: block;
+            color: #1d6bf0;
+            font-size: 12px;
+            padding-top: 15px;
+            width: 100px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .message-password {
+            margin-top: 14px;
+
+        }
+
+        .remember {
+            height: 14px;
+            width: 100px;
+            line-height: 12px;
+        }
+
+        .remember input[type="checkbox"] {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            /*-webkit-appearance: none;*/
+            /*-moz-appearance: none;*/
+            /*appearance: none;*/
+            /*-webkit-border-radius:0;*/
+            /*-moz-border-radius:0;*/
+            /*border-radius:0;*/
+            /*border: 1px solid #aaaaaa;*/
+            vertical-align: middle;
+            /*position: relative;*/
+            /*background-color: #fff;*/
+        }
+
+        .remember label {
+            font-size: 12px;
+            color: #434343;
+            line-height: 10px;
+        }
+
+        .forget {
+            height: 12px;
+            width: 100px;
+        }
+
+        .forget a {
+            display: block;
+            color: #434343;
+            font-size: 12px;
+        }
+
+        /* 按钮特效 begin*/
+        .btn1 {
+            color: rgba(255, 255, 255, 1);
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+            position: relative;
+            /*border: 1px solid rgba(255, 255, 255, 0.5);*/
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .btn1 span {
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .btn1:hover > span {
+            opacity: 0;
+            -webkit-transform: translate(0px, 40px);
+            transform: translate(0px, 40px);
+        }
+
+        .btn1::after {
+            content: attr(data-text);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            -webkit-transform: translate(-30%, 0);
+            transform: translate(-30%, 0);
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            /*transition-duration: 1s;*/
+            font-size: 26px;
+        }
+
+        .btn1:hover::after {
+            opacity: 1;
+            -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+        }
+
+        .btn2 {
+            color: rgba(255, 255, 255, 1);
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+            position: relative;
+            /*border: 1px solid rgba(255, 255, 255, 0.5);*/
+        }
+
+        .btn2 a {
+            color: rgba(51, 51, 51, 1);
+            text-decoration: none;
+            display: block;
+        }
+
+        .btn2:hover {
+            /*background-color: rgba(255, 255, 255, 0.2);*/
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        /* 按钮特效 end*/
+        .copy {
+            color: #FFF;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 29px;
+        }
+    </style>
+</head>
+<body style="background: url('assets/global/css/img/loginzs/login-bg.png') no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /*filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/login-bg.png',  sizingMethod='scale');*/
+    -ms-filter: progid: DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#ffffff,endColorStr=#b3cde5);
+    filter:progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#ffffff,endColorStr=#b3cde5);">
+<section>
+    <div class="login-position">
+        <div class="login-con">
+            <div class="login-top">
+                <div class="left l">
+                    <img id="login-left-1" style="position: absolute;left: 50px;top: 200px;"
+                         src="assets/global/css/img/loginzs/login-01.png"></img>
+                    <img id="login-left-2" style="position: absolute;left: 150px;top: 200px;"
+                         src="assets/global/css/img/loginzs/login-02.png"></img>
+                    <img id="login-left-3" style="position: absolute;left: 120px;top: 80px;"
+                         src="assets/global/css/img/loginzs/login-03.png"></img>
+                    <img id="login-left-4" style="position: absolute;left: 210px;top: 100px;"
+                         src="assets/global/css/img/loginzs/login-04.png"></img>
+                    <img id="login-left-5" style="position: absolute;left: 260px;top: 50px;"
+                         src="assets/global/css/img/loginzs/login-05.png"></img>
+                    <img id="login-left-6" style="position: absolute;left: 340px;top: 100px;"
+                         src="assets/global/css/img/loginzs/login-06.png"></img>
+                    <img id="login-left-7" style="position: absolute;left: 400px;top: 160px;"
+                         src="assets/global/css/img/loginzs/login-07.png"></img>
+                </div>
+                <div class="right l">
+                    <div class="r-wrap">
+                        <img src="assets/global/css/img/login/nxg_logo.png" alt="" class="logo">
+                        <h3>脑血管病智能辅助诊疗技术及决策平台</h3>
+                        <form id="loginForm" action="">
+                            <div class="user">
+                                <i class="icon-login icon-u"></i>
+                                <input type="text" class="user-input" placeholder="请输入用户名" id="username">
+                            </div>
+                            <div class="password">
+                                <i class="icon-login icon-p"></i>
+                                <input type="password" class="psd-input" placeholder="请输入密码" id="password">
+                            </div>
+                            <div class="code clear">
+                                <div class="c-left l">
+                                    <i class="icon-login icon-c"></i>
+                                    <input id="code" type="text" class="code-input" placeholder="请输入验证码">
+                                </div>
+                                <div id="code-produce" class="c-right r"></div>
+                            </div>
+                            <p id="input-error" class="error" style="visibility:hidden  ">
+                                <i class="icon-e"></i>
+                                <span></span>
+                            </p>
+                            <input type="hidden" name="j_username" id="j_username" />
+                            <input type="hidden" name="j_password" id="j_password" />
+                            <input type="hidden" name="ssourl" id="ssourl" />
+                            <input type="hidden" name="from" id="from" />
+                            <input type="hidden" name="nbd" id="nbd" />
+                            <input type="hidden" name="appid" id="appid" />
+                                <div id="submit" onclick="login()">
+                                <span class="submit-btn btn1">登&nbsp;&nbsp;&nbsp;&nbsp;录</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="copy">Copyright © 2018 卫宁健康科技集团股份有限公司 沪ICP 123140</div>
+        </div>
+    </div>
+</section>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script>
+    var paramKey = '_LOGIN_PARAMS_KEY';
+
+    function params(callback) {
+        var paramStr = localStorage.getItem(paramKey);
+        if (null != paramStr) {
+            callback(JSON.parse(paramStr));
+        } else {
+            var url = 'api/login/params';
+            $.get(url, function (resp) {
+                localStorage.setItem(paramKey, JSON.stringify(resp.data));
+                callback(resp.data);
+            })
+        }
+    }
+
+    function setParams(params) {
+        //设置登录地址
+        $('#loginForm').attr("action", params.action);
+        //设置隐藏参数
+        $('#ssourl').val(params.ssourl);
+        $('#nbd').val(params.nbd);
+        $('#from').val(params.from);
+        $('#appid').val(params.appid);
+    }
+
+    //参数预设
+    params(setParams);
+
+    function urlPrarm(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    function checkErr() {
+        var errCode = urlPrarm("err");
+        if ('401' == errCode) {
+            return '用户密码不匹配，请重新输入！';
+        }
+        return '';
+    }
+
+    $(document).ready(function () {
+        animate_login1();
+        animate_login2();
+        animate_login3();
+        animate_login4();
+        animate_login5();
+        animate_login6();
+        animate_login7();
+
+        /*生成验证码*/
+        create_code();
+
+
+        function create_code() {
+            function shuffle() {
+                var arr = ['1', 'r', 'Q', '4', 'S', '6', 'w', 'u', 'D', 'I', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                    'q', '2', 's', 't', '8', 'v', '7', 'x', 'y', 'z', 'A', 'B', 'C', '9', 'E', 'F', 'G', 'H', '0', 'J', 'K', 'L', 'M', 'N', 'O', 'P', '3', 'R',
+                    '5', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+                return arr.sort(function () {
+                    return (Math.random() - .5);
+                });
+            };
+            shuffle();
+
+            function show_code() {
+                var ar1 = '';
+                var code = shuffle();
+                for (var i = 0; i < 4; i++) {
+                    ar1 += " " + code[i];
+                }
+                ;
+                //var ar=ar1.join('');
+                $(".c-right").text(ar1);
+            };
+            show_code();
+            $(".c-right").click(function () {
+                $("#input-error").css("visibility", "hidden");
+                show_code();
+            });
+        }
+
+        var errorMessage = checkErr();
+        $('#loginBtn').click(function () {
+            login();
+        });
+
+        $('.login-form input').keypress(function (e) {
+            if (e.which == 13) {
+                login();
+            }
+        });
+
+        if (errorMessage != "") {
+            $("#input-error").children()[1].innerHTML = errorMessage;
+            $("#input-error").css("visibility", "visible");
+            $(".submit-btn").css("background-color", "#3769e4");
+        }
+    });
+
+    function animate_login1() {
+        $("#login-left-1").animate({top: '180px'}, 1500, function () {
+            $("#login-left-1").animate({top: '200px'}, 1500, animate_login1());
+        });
+    }
+
+    function animate_login2() {
+        $("#login-left-2").animate({top: '180px'}, 1500, function () {
+            $("#login-left-2").animate({top: '200px'}, 1500, animate_login2());
+        });
+    }
+
+    function animate_login3() {
+        $("#login-left-3").animate({top: '60px'}, 1500, function () {
+            $("#login-left-3").animate({top: '80px'}, 1500, animate_login3());
+        });
+    }
+
+    function animate_login4() {
+        $("#login-left-4").animate({top: '80px'}, 1500, function () {
+            $("#login-left-4").animate({top: '100px'}, 1500, animate_login4());
+        });
+    }
+
+    function animate_login5() {
+        $("#login-left-5").animate({top: '20px'}, 1000, function () {
+            $("#login-left-5").animate({top: '50px'}, 1000, animate_login5());
+        });
+    }
+
+    function animate_login6() {
+        $("#login-left-6").animate({top: '70px'}, 1000, function () {
+            $("#login-left-6").animate({top: '100px'}, 1000, animate_login6());
+        });
+    }
+
+    function animate_login7() {
+        $("#login-left-7").animate({top: '130px'}, 1000, function () {
+            $("#login-left-7").animate({top: '160px'}, 1000, animate_login7());
+        });
+    }
+
+
+    var isClickFlag = false;
+
+    function login() {
+        if (isClickFlag)
+            return;
+
+        $(".submit-btn").css("background-color", "#707b95");
+        isClickFlag = true;
+
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var code = $("#code").val();
+        if (username == "" || password == "" || code == "") {
+            $("#input-error").children()[1].innerHTML = "账号或密码或验证码为空,请重新输入！";
+            $("#input-error").css("visibility", "visible");
+            $(".submit-btn").css("background-color", "#3769e4");
+            isClickFlag = false;
+        } else if ($('#code').val().toLowerCase() != $("#code-produce").text().toLowerCase().replace(/\s/ig, '')) {
+            $("#input-error").children()[1].innerHTML = "验证码有误,请重新输入！";
+            $("#input-error").css("visibility", "visible");
+            $(".submit-btn").css("background-color", "#3769e4");
+            isClickFlag = false;
+        }
+        else {
+            handleLogin();
+        }
+    }
+
+    function handleLogin() {
+        //加密
+        if ($('#nbd').val() == 'true') {
+            $('#j_username').val(window.btoa($('#username').val()));
+            $('#j_password').val(window.btoa($('#password').val()));
+        } else {
+            $('#j_username').val($('#username').val());
+            $('#j_password').val($('#password').val());
+        }
+        $('#loginForm').submit();
+    }
+
+    $(document).keydown(function (event) {
+        if (event.keyCode == 13) {
+            $("#submit").click();
+        }
+    });
+
+</script>
+</body>
+</html>

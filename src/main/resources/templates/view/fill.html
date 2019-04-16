@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>脑血管病智能辅助诊疗技术及决策平台</title>
+    <div th:replace="comm/common_css"></div>
+    <link rel="stylesheet" th:href="@{/page/css/comp.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap-table/dist/bootstrap-table.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/global/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/page/css/form-crud/form-crud.css}">
+
+</head>
+
+<body style="color: #0b1014 !important;background: none !important;">
+<input type="hidden" id="res-module" value="crf_data_mng"/>
+<script>
+    !function () {
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+
+        var typeCode = getQueryString('typeCode');
+        if (typeCode) {
+            document.getElementById('res-module').value = 'crf_type_' + typeCode;
+        }
+    }()
+</script>
+<div th:replace="comm/header"></div>
+<div class="page-wrapper" style="z-index: 0">
+    <div class="page-wrapper-row full-height">
+        <div class="page-wrapper-middle">
+            <!--具体内容-->
+            <div class="page-container">
+                <div class="page-content-wrapper">
+                    <!--内容头信息-->
+                    <div class="page-head">
+                        <div class="container">
+                            <div class="page-toolbar">
+                            </div>
+                        </div>
+                    </div>
+                    <!--内容-->
+                    <div class="page-content">
+                        <div class="container-fluid">
+                            <div class="panel-body" style="padding-bottom:0px;padding-top:15px;">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <div class="row">
+                                            <div class="input-group col-3">
+                                                <label class="pull-left control-label s-label">试验编号: &nbsp;&nbsp;</label>
+                                                <input type="text" class="form-control" id="testNumberQuery"
+                                                       placeholder="按试验编号...">
+                                            </div>
+                                            <div class="input-group col-5 date">
+                                                <span class="pull-left control-label s-label input-group-addon">研究日期: &nbsp;&nbsp;</span>
+                                                <input class="form-control date-picker form-control-left" id="startDateQuery" name="startDateQuery">
+                                                <span class="input-group-addon">&nbsp;&nbsp;至&nbsp;&nbsp;</span>
+                                                <input class="form-control date-picker form-control-right" id="endDateQuery" name="endDateQuery">
+                                            </div>
+                                            <div id="rptTypeDiv" class="input-group col-3" style="display: none;">
+                                                <!--课题ID-->
+                                                <input type="text" hidden id="subjectId" value="1" >
+                                                <!--填报分类-->
+                                                <label class="pull-left control-label s-label">填报类别: &nbsp;&nbsp;</label>
+                                                <select class="bs-select form-control" tabindex="-98" id="rptTypeCodeSelect" onchange="fieldTypeChange()">
+                                                </select>
+                                            </div>
+                                            <div class="input-group col">
+                                                <button class="btn btn-primary" type="button" onclick="queryTable()"><i class="fa fa-search"></i>&nbsp;查&nbsp;询
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col text-right" id="optCtxRight">
+
+                                    </div>
+                                </div>
+                                <table id="crfList"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="comm/footer"></div>
+</div>
+<!--新增模态窗体-->
+<div th:replace="comp/form/modal-add"></div>
+<div th:replace="comp/form/modal-upload"></div>
+<div th:replace="comp/form/modal-upload-pic"></div>
+<div th:replace="comp/form/modal-download"></div>
+<div th:replace="comm/common_js"></div>
+<div th:replace="comp/form/comps"></div>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/bootstrap-table-locale-all.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js}"></script>
+<script th:src="@{/webjars/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/webjars/jquery-validation/localization/messages_zh.min.js}"></script>
+<script th:src="@{/assets/global/plugins/jquery-form/jquery.form.js}"></script>
+<script th:src="@{/assets/global/plugins/jquery-form/form-result-data.js}"></script>
+<script th:src="@{/webjars/momentjs/min/moment-with-locales.min.js}"></script>
+<script th:src="@{/page/js/view/crf_list.js?}+${T(com.wn.sjpt.crf.util.Cons).VERSION}"></script>
+
+</body>
+</html>
