@@ -5,6 +5,7 @@ $(function () {
     $('#btn-audio-upload').off('click').on('click',AUDIO_UPLOAD.open);
     $('#fileSong').off('change').on('change',AUDIO_UPLOAD.upload);
     VIDEO_UPLOAD.init();
+
 });
 var FIRST_REGISTER = function () {
     var _REG_FLAG={};
@@ -413,6 +414,7 @@ var FIRST_REGISTER = function () {
                 return true;
         }
     };
+
     var checkRule=function (notVali) {
         return {
             //入选规则
@@ -454,6 +456,7 @@ var FIRST_REGISTER = function () {
                     alert("身份证不能为空");
                     return false;
                 }
+
                 if (!!data.height) {
                     if (data.height < 100 || data.height > 200) {
                         alert("身高填写错误");
@@ -461,6 +464,18 @@ var FIRST_REGISTER = function () {
                     }
                 } else {
                     alert("身高不能为空");
+                    return false;
+                }
+                //新增姓名校验   rzy
+                //姓名校验规则   中英文20个字符    rzy
+                //var $preg='//^[a-zA-Z\\x{4e00}-\\x{9fa5}]{2,20}$//u';
+                if(!!data.name){
+                    if (data.name.length<2 || data.name.length>20 ){
+                        alert("姓名格式填写错误")
+                        return false;
+                    }
+                }else{
+                    alert("姓名不能为空");
                     return false;
                 }
                 if (!!data.weight) {
@@ -472,6 +487,7 @@ var FIRST_REGISTER = function () {
                     alert("体重不能为空");
                     return false;
                 }
+
                 if(!!data.sp){
                     if (  data.sp < 60 || data.sp > 250) {
                         alert("收缩压填写错误");
@@ -494,6 +510,8 @@ var FIRST_REGISTER = function () {
             }
         }
     }(notVali);
+
+
 
     var loadCrfId = function () {
         var url = '/ecrf/api/es/uid/' + 1;

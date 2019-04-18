@@ -345,4 +345,5 @@ var CompBase = function () {
         show: show,
         rules: rules
     }
+
 }();
